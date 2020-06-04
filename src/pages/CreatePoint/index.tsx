@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import './styles.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
@@ -41,6 +41,8 @@ const CreatePoint = () => {
     email: '',
     whatsapp: '',
   });
+
+  const history = useHistory();
 
 
   // Get items that can be colected
@@ -136,6 +138,8 @@ const CreatePoint = () => {
     await api.post('points', data);
 
     alert('Ponto de coleta criado!');
+
+    history.push('/');
   }
 
   return (
